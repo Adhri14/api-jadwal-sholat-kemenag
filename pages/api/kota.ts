@@ -1,5 +1,5 @@
 import { searchProvince } from '../../helper/Province'
-import { searchCity} from '../../helper/Network'
+import { searchCity } from '../../helper/Network'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -11,11 +11,11 @@ export default async function handler(
         return res.status(400).json({ message: "Please fill param `provinsi`" })
     }
 
-    if (searchName.includes("+")) {
-        searchName = searchName.replaceAll("+", " ")
-    }
+    // if (searchName.includes("+")) {
+    //     searchName = searchName.replaceAll("+", " ")
+    // }
 
-    let provinceData = searchProvince(searchName.toLowerCase())
+    let provinceData = searchProvince(searchName)
 
     if (provinceData == undefined) {
         return res.status(400).json({ message: "Unknown `provinsi` data, try another key" })

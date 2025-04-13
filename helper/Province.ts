@@ -143,8 +143,8 @@ const getProvince = (): RegionData[] => {
     return provinceData
 }
 
-const searchProvince = (name: string): RegionData | undefined => {
-    return provinceData.find(function (row) { return row.name == name })
+const searchProvince = (id: string): RegionData | undefined => {
+    return provinceData.find(function (row) { return row.id == id })
 }
 
 export { getProvince, searchProvince }  
