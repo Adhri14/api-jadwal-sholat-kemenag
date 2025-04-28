@@ -26,7 +26,7 @@ jobs:
           environment: production
       - name: Set up SSH Key and Deploy my App on Server
         # run: |
-        uses: appleboy/ssh-action@master
+        uses: Adhri14/api-jadwal-sholat-kemenag@main
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
         with:
@@ -38,10 +38,10 @@ jobs:
           script: |
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
             cd chatg/
-            git pull origin dev-branch
+            git pull origin main
             npm ci
-            npm run frontend
-            pm2 restart chatg --update-env
+            npm run build
+            pm2 restart 0
       - name: Update deployment Status (success)
         if: success()
         uses: chrnorm/deployment-status@v2
